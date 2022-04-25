@@ -12,7 +12,7 @@ library(nlme); library(ggplot2); library(lme4); library(car)
 library(dplyr); library(RColorBrewer); library(viridis)
 library(gtools); library(patchwork); library(knitr)
 library(lmtest); library(ggthemes); library(lattice)
-library(modeest); library(latex2exp)
+library(latex2exp)
 
 ######################################
 ##
@@ -22,7 +22,7 @@ library(modeest); library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
-names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tama駉", "Sector", 
+names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tama帽o", "Sector", 
                   "Particip", "AmbDiscrim", "MaioriaMin")
 levels(mates$Sector) <- c("Publica", "Catolica")
 levels(mates$SocialMin) <- c("Non", "Si")
@@ -45,7 +45,7 @@ eps <- residuals(mls0)
 
 ggplot(data.frame(cbind(StSE[ind], NotaMates[ind])), aes(x = StSE[ind], y = NotaMates[ind])) +
   geom_point() +
-  xlab("Status socio-econ髆ico de 40 nenas/os") + ylab("Nota en Matem醫icas de 40 nenas/os") +
+  xlab("Status socio-econ贸mico de 40 nenas/os") + ylab("Nota en Matem谩ticas de 40 nenas/os") +
   geom_smooth(method='lm', se = FALSE, col = "darkcyan") +
   geom_segment(x = StSE[ind][12], y = NotaMates[ind][12], xend = StSE[ind][12], 
                yend = NotaMates[ind][12] - eps[12], color = "tomato3", arrow = arrow(), size = 1) +
@@ -97,7 +97,7 @@ for (i in 1:length(levels(mates7$Escola))){
 
 ggplot(mates7, aes(x = Escola, y = NotaMates, color = Escola)) + 
   geom_boxplot() +
-  labs(x = "Escolas", y = "Notas en Matem醫icas", color = "Escolas") +
+  labs(x = "Escolas", y = "Notas en Matem谩ticas", color = "Escolas") +
   scale_color_brewer(palette = "Dark2") +
   geom_segment(x = 0.625, y = mu_local[1], xend = 	1.375, yend = mu_local[1], linetype = "dotted", col = "firebrick4") +
   geom_segment(x = 1.625, y = mu_local[2], xend = 	2.375, yend = mu_local[2], linetype = "dotted", col = "firebrick4") +
@@ -126,7 +126,7 @@ mates7_bonf <- Bonferroni_taboa(NotaMates, Escola, alpha_sen_CB = 0.001, ndixito
 mates7_bonf$intervsim # intervalos de confianza simultaneos
 mates7_bonf$difiren # difiren as escolas: E1-E4, E3-E4, E3-E7 e E4-E5
 mates7_bonf$nondifiren # escolas que non difiren
-mates7_bonf$alpha_CB #alpha empregado coa correcci髇 de Bonferroni
+mates7_bonf$alpha_CB #alpha empregado coa correcci贸n de Bonferroni
 
 
 ######################################
@@ -138,7 +138,7 @@ mates7_bonf$alpha_CB #alpha empregado coa correcci髇 de Bonferroni
 ancova1 <- lm(NotaMates ~ StSE + Escola) #ANCOVA sen interaccion
 ancova2 <- lm(NotaMates ~ StSE * Escola) #ANCOVA con interaccion
 
-anova(ancova1, ancova2) #test F, interacci髇 non significativa
+anova(ancova1, ancova2) #test F, interacci贸n non significativa
 
 #Contraste sobre o efecto dos grupos e de StSE
 mod_StSE <- lm(NotaMates ~ StSE) #sen grupos
@@ -148,7 +148,7 @@ anova(ancova1, mod_g) #efecto do StSE significativo
 
 ###-------------------------------GRAFICO ANCOVA------------
 
-coefs_anc1 <- ancova1$coefficients #estimacions ANCOVA sen interacci髇
+coefs_anc1 <- ancova1$coefficients #estimacions ANCOVA sen interacci贸n
 display.brewer.pal(n = 7, name = "Dark2") #Paleta de cores que se vai empregar
 dark_2 <- brewer.pal(n = 7, name = "Dark2")
 rang <- data.frame(i = numeric(7), f = numeric(7))
@@ -169,7 +169,7 @@ recta <- function(x = 0, grupo = 1){
 
 ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-econ髆ico", y = "Notas en Matem醫icas", color = "Escolas") +
+  labs(x = "Status socio-econ贸mico", y = "Notas en Matem谩ticas", color = "Escolas") +
   coord_cartesian(ylim = c(-.5, 25) ) +
   scale_color_brewer(palette = "Dark2") +
   geom_segment(x = rang[1,1], xend = rang[1,2], y = recta(rang[1,1]), yend = recta(rang[1,2]), 
@@ -195,7 +195,7 @@ ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
 
 ancova_ci <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-econ髆ico", color = "Escolas") +
+  labs(x = "Status socio-econ贸mico", color = "Escolas") +
   scale_color_brewer(palette = "Dark2") +
   geom_smooth(method = "lm", se = FALSE, lwd = 1.25) +
   #  theme_bw() +
