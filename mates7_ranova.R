@@ -12,7 +12,7 @@ library(nlme); library(ggplot2); library(lme4); library(car)
 library(dplyr); library(RColorBrewer); library(viridis)
 library(gtools); library(patchwork); library(knitr)
 library(lmtest); library(ggthemes); library(lattice)
-library(modeest); library(latex2exp)
+library(latex2exp)
 
 ######################################
 ##
@@ -22,7 +22,7 @@ library(modeest); library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
-names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tamaño", "Sector", 
+names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "TamaÃ±o", "Sector", 
                   "Particip", "AmbDiscrim", "MaioriaMin")
 levels(mates$Sector) <- c("Publica", "Catolica")
 levels(mates$SocialMin) <- c("Non", "Si")
@@ -71,7 +71,7 @@ dark_2 <- brewer.pal(n = 7, name = "Dark2")
 
 ggplot(mates7, aes(x = Estudante, y = NotaMates, color = Escola)) +
   geom_point(size = 1.5) +
-  ylab("Nota en Matemáticas") +
+  ylab("Nota en MatemÃ¡ticas") +
   coord_cartesian(ylim = c(.5, 25)) +
   scale_color_brewer(palette = "Dark2") +
   #Media global
@@ -214,7 +214,7 @@ ggplot(mates7, aes(x = Estudante, y = NotaMates, color = Escola)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(0, 350), ylim = c(1, 25)) +
   xlab("Indentificador de estudante") + 
-  ylab("Nota en Matemáticas") + 
+  ylab("Nota en MatemÃ¡ticas") + 
   scale_color_brewer(palette = "Dark2") +
   #Media global
   geom_segment(x = -7, y = summary(ranovamates)$coef[1], xend = 317, 
