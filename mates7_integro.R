@@ -24,7 +24,7 @@ library(modeest); library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
-names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tamaño", "Sector", 
+names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "TamaÃ±o", "Sector", 
                   "Particip", "AmbDiscrim", "MaioriaMin")
 levels(mates$Sector) <- c("Publica", "Catolica")
 levels(mates$SocialMin) <- c("Non", "Si")
@@ -35,23 +35,23 @@ attach(mates)
 ### Taboa presentacion data.frame
 kable(head(mates, 5), format = "pipe", digits = 2, row.names = FALSE) # format = "latex" para codigo latex
 #(i) Variables relativas ao alumnado:
-  # Escola: identificador da escola á que acode cada alumna/o, numeradas do 1 ao 160
-  # SocialMin: variable dicotomica que toma os valores ``Si'' ou ``Non'' indicando se a/o estudante é membro dun 
+  # Escola: identificador da escola Ã¡ que acode cada alumna/o, numeradas do 1 ao 160
+  # SocialMin: variable dicotomica que toma os valores ``Si'' ou ``Non'' indicando se a/o estudante Ã© membro dun 
     # grupo racial minoritario ou non, respectivamente.
   # Sexo: variable discreta indicadora do sexo que toma os valores  ``Home'' ou  ``Muller''.
   # StSE: status socio-economico da familia a que pertence a/o alumna/o.
   # NotaMates: nota acadada na materia de Matematicas.
 #(ii) Variables relativas as escolas:
-  # MStSE: media dos StSE das/os alumnas/os para cada centro educativo. Mide o status socio-económico promedio dos colexios.
-  # Tamaño: numero de estudantes en cada escola.
-  # Sector: variable categorica indicando o carácter publico ou privado da escola.
+  # MStSE: media dos StSE das/os alumnas/os para cada centro educativo. Mide o status socio-econÃ³mico promedio dos colexios.
+  # TamaÃ±o: numero de estudantes en cada escola.
+  # Sector: variable categorica indicando o carÃ¡cter publico ou privado da escola.
   # Particip: proporcion de estudantes da escola que participan no estudo academico, de 0 a 1.
   # AmbDiscrim: medida do ambiente discriminatorio presente na escola.
-  # MaioriaMin: variable dicotómica que toma o valor 1 para as escolas con máis do 40% das/os matriculadas/os 
+  # MaioriaMin: variable dicotÃ³mica que toma o valor 1 para as escolas con mÃ¡is do 40% das/os matriculadas/os 
     # membros dun grupo racial minoritario, e 0 para o caso contrario.
 
 
-### Validación da normalidade por grupos de escola
+### ValidaciÃ³n da normalidade por grupos de escola
 table(Escola)
 length(levels(Escola)) #160 escolas
 pval <- rep(0, length(levels(Escola)))
@@ -59,7 +59,7 @@ for (i in 1:length(levels(Escola))){
   aux <- NotaMates[Escola == levels(Escola)[i]]
   pval[i] <- shapiro.test(aux)$p.value
 }
-sum(pval < 0.001) #só 5 escolas
+sum(pval < 0.001) #sÃ³ 5 escolas
 
 #Validacion da homoxeneidade de varianzas
 leveneTest(lm(NotaMates ~ as.vector(Escola)), center = mean)
@@ -78,7 +78,7 @@ eps <- residuals(mls0)
 
 ggplot(data.frame(cbind(StSE[ind], NotaMates[ind])), aes(x = StSE[ind], y = NotaMates[ind])) +
   geom_point() +
-  xlab("Status socio-económico de 40 nenas/os") + ylab("Nota en Matemáticas de 40 nenas/os") +
+  xlab("Status socio-econÃ³mico de 40 nenas/os") + ylab("Nota en MatemÃ¡ticas de 40 nenas/os") +
   geom_smooth(method='lm', se = FALSE, col = "darkcyan") +
   geom_segment(x = StSE[ind][12], y = NotaMates[ind][12], xend = StSE[ind][12], 
                yend = NotaMates[ind][12] - eps[12], color = "tomato3", arrow = arrow(), size = 1) +
@@ -108,7 +108,7 @@ escolas_particip100 <- which(MathAchSchool$PRACAD == 1) #escolas con participaci
 alum_escolas_particip100 <- which(Escola %in% escolas_particip100) #alumnos de escolas con participacion unanime
 length(alum_escolas_particip100) #307 alumnos de 7 escolas
 
-### Validación da normalidade por grupos de escola
+### ValidaciÃ³n da normalidade por grupos de escola
 pval <- rep(0, length(escolas_particip100))
 alpha <- 0.001
 for (i in 1:length(escolas_particip100)){
@@ -142,7 +142,7 @@ for (i in 1:length(levels(mates7$Escola))){
 
 ggplot(mates7, aes(x = Escola, y = NotaMates, color = Escola)) + 
   geom_boxplot() +
-  labs(x = "Escolas", y = "Notas en Matemáticas", color = "Escolas") +
+  labs(x = "Escolas", y = "Notas en MatemÃ¡ticas", color = "Escolas") +
   scale_color_brewer(palette = "Dark2") +
   geom_segment(x = 0.625, y = mu_local[1], xend = 	1.375, yend = mu_local[1], linetype = "dotted", col = "firebrick4") +
   geom_segment(x = 1.625, y = mu_local[2], xend = 	2.375, yend = mu_local[2], linetype = "dotted", col = "firebrick4") +
@@ -171,7 +171,7 @@ mates7_bonf <- Bonferroni_taboa(NotaMates, Escola, alpha_sen_CB = 0.001, ndixito
 mates7_bonf$intervsim # intervalos de confianza simultaneos
 mates7_bonf$difiren # difiren as escolas: E1-E4, E3-E4, E3-E7 e E4-E5
 mates7_bonf$nondifiren # escolas que non difiren
-mates7_bonf$alpha_CB #alpha empregado coa corrección de Bonferroni
+mates7_bonf$alpha_CB #alpha empregado coa correcciÃ³n de Bonferroni
 
 
 ######################################
@@ -183,7 +183,7 @@ mates7_bonf$alpha_CB #alpha empregado coa corrección de Bonferroni
 ancova1 <- lm(NotaMates ~ StSE + Escola) #ANCOVA sen interaccion
 ancova2 <- lm(NotaMates ~ StSE * Escola) #ANCOVA con interaccion
 
-anova(ancova1, ancova2) #test F, interacción non significativa
+anova(ancova1, ancova2) #test F, interacciÃ³n non significativa
 
 #Contraste sobre o efecto dos grupos e de StSE
 mod_StSE <- lm(NotaMates ~ StSE) #sen grupos
@@ -193,7 +193,7 @@ anova(ancova1, mod_g) #efecto do StSE significativo
 
 ###-------------------------------GRAFICO ANCOVA------------
 
-coefs_anc1 <- ancova1$coefficients #estimacions ANCOVA sen interacción
+coefs_anc1 <- ancova1$coefficients #estimacions ANCOVA sen interacciÃ³n
 display.brewer.pal(n = 7, name = "Dark2") #Paleta de cores que se vai empregar
 dark_2 <- brewer.pal(n = 7, name = "Dark2")
 rang <- data.frame(i = numeric(7), f = numeric(7))
@@ -214,7 +214,7 @@ recta <- function(x = 0, grupo = 1){
 
 ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-económico", y = "Notas en Matemáticas", color = "Escolas") +
+  labs(x = "Status socio-econÃ³mico", y = "Notas en MatemÃ¡ticas", color = "Escolas") +
   coord_cartesian(ylim = c(-.5, 25) ) +
   scale_color_brewer(palette = "Dark2") +
   geom_segment(x = rang[1,1], xend = rang[1,2], y = recta(rang[1,1]), yend = recta(rang[1,2]), 
@@ -240,7 +240,7 @@ ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
 
 ancova_ci <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-económico", color = "Escolas") +
+  labs(x = "Status socio-econÃ³mico", color = "Escolas") +
   scale_color_brewer(palette = "Dark2") +
   geom_smooth(method = "lm", se = FALSE, lwd = 1.25) +
   #  theme_bw() +
@@ -280,7 +280,7 @@ eps_vc <- residuals(vcmates)
 
 ggplot(mates7, aes(x = Estudante, y = NotaMates, color = Escola)) +
   geom_point(size = 1.5) +
-  ylab("Nota en Matemáticas") +
+  ylab("Nota en MatemÃ¡ticas") +
   coord_cartesian(ylim = c(.5, 25)) +
   scale_color_brewer(palette = "Dark2") +
   #Media global
@@ -419,7 +419,7 @@ ggplot(mates7, aes(x = Estudante, y = NotaMates, color = Escola)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(0, 350), ylim = c(1, 25)) +
   xlab("Indentificador de estudante") + 
-  ylab("Nota en Matemáticas") + 
+  ylab("Nota en MatemÃ¡ticas") + 
   scale_color_brewer(palette = "Dark2") +
   #Media global
   geom_segment(x = -7, y = summary(ranovamates)$coef[1], xend = 317, 
@@ -535,7 +535,7 @@ eps_mm1 <- residuals(matesmm1)
 rectamm1 <- function(x = 0, escola = NULL){
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   if (is.null(escola)){
@@ -550,8 +550,8 @@ rectamm1 <- function(x = 0, escola = NULL){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   scale_color_brewer(palette = "Dark2") +
   #Media global
   geom_segment(x = -1.7, xend = 1.5, y = rectamm1(-1.7), yend = rectamm1(1.45), size = 1.35, col = 1) +
@@ -637,7 +637,7 @@ matesmm2 <- lmer(NotaMates ~ StSE + SocialMin + (1 | Escola), data = mates7, REM
   # (por defecto), pendente fixa asociada ao indice socio-economico e mais a variable discreta SocialMin, intercepto 
   # aleatorio e co identificador da variable de segundo nivel Escola
 matesmmproba <- lmer(NotaMates ~ StSE + Sexo + (1 | Escola), data = mates7, REML = FALSE) # con Sexo
-#Tests de razón de verosimilitudes
+#Tests de razÃ³n de verosimilitudes
 anova(matesmm1, matesmm2)
 anova(matesmm1, matesmmproba)
 lrtest(matesmm1, matesmm2) #analogo
@@ -681,11 +681,11 @@ eps_mm2 <- residuals(matesmm2)
 
 rectamm2 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -710,8 +710,8 @@ rectamm2 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
@@ -830,11 +830,11 @@ eps_mm3 <- residuals(matesmm3)
 
 rectamm3 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -859,8 +859,8 @@ rectamm3 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
@@ -1020,11 +1020,11 @@ pval_mm4_MStSE <- 1 - pchisq(LR_mm4, df = 1) # p-valor
 
 rectamm4 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -1050,8 +1050,8 @@ rectamm4 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
@@ -1137,9 +1137,9 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
 ###-------------------------------matesmm5,6,7: Variable contextual global------------
 
 #-------------------------------------------------#
-# Engadiremos Tamaño ao modelo matesmm3
-# matesmm5 <- update(matesmm3, . ~ . + Tamaño)
-matesmm5 <- lmer(NotaMates ~ StSE + SocialMin + Tamaño + (1 + StSE | Escola), REML = FALSE)
+# Engadiremos TamaÃ±o ao modelo matesmm3
+# matesmm5 <- update(matesmm3, . ~ . + TamaÃ±o)
+matesmm5 <- lmer(NotaMates ~ StSE + SocialMin + TamaÃ±o + (1 + StSE | Escola), REML = FALSE)
 summary(matesmm5)
 lrtest(matesmm3, matesmm5)
 
