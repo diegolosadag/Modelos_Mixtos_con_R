@@ -20,7 +20,7 @@ library(nlme); library(ggplot2); library(lme4); library(car)
 library(dplyr); library(RColorBrewer); library(viridis)
 library(gtools); library(patchwork); library(knitr)
 library(lmtest); library(ggthemes); library(lattice)
-library(modeest); library(latex2exp)
+library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
