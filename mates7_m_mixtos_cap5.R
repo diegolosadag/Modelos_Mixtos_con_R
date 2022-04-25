@@ -12,7 +12,7 @@ library(nlme); library(ggplot2); library(lme4); library(car)
 library(dplyr); library(RColorBrewer); library(viridis)
 library(gtools); library(patchwork); library(knitr)
 library(lmtest); library(ggthemes); library(lattice)
-library(modeest); library(latex2exp)
+library(latex2exp)
 
 ######################################
 ##
@@ -22,7 +22,7 @@ library(modeest); library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
-names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tamaño", "Sector", 
+names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "TamaÃ±o", "Sector", 
                   "Particip", "AmbDiscrim", "MaioriaMin")
 levels(mates$Sector) <- c("Publica", "Catolica")
 levels(mates$SocialMin) <- c("Non", "Si")
@@ -78,11 +78,11 @@ pval_mm4_MStSE <- 1 - pchisq(LR_mm4, df = 1) # p-valor
 
 rectamm4 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -108,8 +108,8 @@ rectamm4 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
@@ -195,9 +195,9 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
 ###-------------------------------matesmm5,6,7: Variable contextual global------------
 
 #-------------------------------------------------#
-# Engadiremos Tamaño ao modelo matesmm3
-# matesmm5 <- update(matesmm3, . ~ . + Tamaño)
-matesmm5 <- lmer(NotaMates ~ StSE + SocialMin + Tamaño + (1 + StSE | Escola), REML = FALSE)
+# Engadiremos TamaÃ±o ao modelo matesmm3
+# matesmm5 <- update(matesmm3, . ~ . + TamaÃ±o)
+matesmm5 <- lmer(NotaMates ~ StSE + SocialMin + TamaÃ±o + (1 + StSE | Escola), REML = FALSE)
 summary(matesmm5)
 lrtest(matesmm3, matesmm5)
 
