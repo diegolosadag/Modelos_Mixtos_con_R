@@ -12,7 +12,7 @@ library(nlme); library(ggplot2); library(lme4); library(car)
 library(dplyr); library(RColorBrewer); library(viridis)
 library(gtools); library(patchwork); library(knitr)
 library(lmtest); library(ggthemes); library(lattice)
-library(modeest); library(latex2exp)
+library(latex2exp)
 
 ######################################
 ##
@@ -22,7 +22,7 @@ library(modeest); library(latex2exp)
 
 mates <- merge(MathAchieve, MathAchSchool, by = "School")
 mates <- mates[, -12]
-names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "Tamaño", "Sector", 
+names(mates) <- c("Escola", "SocialMin", "Sexo", "StSE", "NotaMates", "MStSE", "TamaÃ±o", "Sector", 
                   "Particip", "AmbDiscrim", "MaioriaMin")
 levels(mates$Sector) <- c("Publica", "Catolica")
 levels(mates$SocialMin) <- c("Non", "Si")
@@ -72,7 +72,7 @@ eps_mm1 <- residuals(matesmm1)
 rectamm1 <- function(x = 0, escola = NULL){
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   if (is.null(escola)){
@@ -87,8 +87,8 @@ rectamm1 <- function(x = 0, escola = NULL){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   scale_color_brewer(palette = "Dark2") +
   #Media global
   geom_segment(x = -1.7, xend = 1.5, y = rectamm1(-1.7), yend = rectamm1(1.45), size = 1.35, col = 1) +
@@ -174,7 +174,7 @@ matesmm2 <- lmer(NotaMates ~ StSE + SocialMin + (1 | Escola), data = mates7, REM
   # (por defecto), pendente fixa asociada ao indice socio-economico e mais a variable discreta SocialMin, intercepto 
   # aleatorio e co identificador da variable de segundo nivel Escola
 matesmmproba <- lmer(NotaMates ~ StSE + Sexo + (1 | Escola), data = mates7, REML = FALSE) # con Sexo
-#Tests de razón de verosimilitudes
+#Tests de razÃ³n de verosimilitudes
 anova(matesmm1, matesmm2)
 anova(matesmm1, matesmmproba)
 lrtest(matesmm1, matesmm2) #analogo
@@ -218,11 +218,11 @@ eps_mm2 <- residuals(matesmm2)
 
 rectamm2 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -247,8 +247,8 @@ rectamm2 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
@@ -367,11 +367,11 @@ eps_mm3 <- residuals(matesmm3)
 
 rectamm3 <- function(x = 0, escola = NULL, sm = 0){
   if (!sm %in% 0:1){
-    stop("Só hai dúas posibilidades para sm, non (0) ou si (1).")
+    stop("SÃ³ hai dÃºas posibilidades para sm, non (0) ou si (1).")
   }
   if (!is.null(escola)){
     if (!escola %in% 1:7){
-      stop("Tal escola non existe, só do 1 ao 7.")
+      stop("Tal escola non existe, sÃ³ do 1 ao 7.")
     }
   }
   
@@ -396,8 +396,8 @@ rectamm3 <- function(x = 0, escola = NULL, sm = 0){
 ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) +
   geom_point(size = 1.25) +
   coord_cartesian(xlim = c(range(StSE)[1], range(StSE)[2]), ylim = c(-.5, 25) ) +
-  xlab("Status socio-económico") + 
-  ylab("Nota en Matemáticas") +
+  xlab("Status socio-econÃ³mico") + 
+  ylab("Nota en MatemÃ¡ticas") +
   labs(shape = "Racial\nminori-\ntario") +
   scale_color_brewer(palette = "Dark2") +
   scale_shape_manual(values = c(16, 17)) +
