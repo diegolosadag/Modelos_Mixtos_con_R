@@ -1,5 +1,5 @@
 # Modelos_Mixtos_con_R
-No script *mates7_gh.R* atópase o código íntegro relativo a este TFG.
+No script *mates7_integro.R* atópase o código íntegro relativo a este TFG.
 
 No script *mates7_clasica.R* atópase o código concernente á Estatística Clásica (Introdución e Capítulo 1: ANOVA e ANCOVA) relativo a este TFG.
 
