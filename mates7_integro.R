@@ -214,7 +214,7 @@ recta <- function(x = 0, grupo = 1){
 
 ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-económico", y = "Notas en Matemáticas", color = "Escolas") +
+  labs(x = "Status socio-económico", y = "Notas en Matemáticas", color = "Escola") +
   coord_cartesian(ylim = c(-.5, 25) ) +
   scale_color_brewer(palette = "Dark2") +
   geom_segment(x = rang[1,1], xend = rang[1,2], y = recta(rang[1,1]), yend = recta(rang[1,2]), 
@@ -233,24 +233,24 @@ ancova_si <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
                col = dark_2[7], lwd = 1.25) +
   theme(
     legend.position = "none",
-    axis.title.x = element_text(size = 18),
-    axis.text.x = element_text(size = 16),
-    axis.title.y = element_text(size = 18),
-    axis.text.y = element_text(size = 16))
+    axis.title.x = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
+    axis.title.y = element_text(size = 16),
+    axis.text.y = element_text(size = 14))
 
 ancova_ci <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) + 
   geom_point() +
-  labs(x = "Status socio-económico", color = "Escolas") +
+  labs(x = "Status socio-económico", color = "Escola") +
   scale_color_brewer(palette = "Dark2") +
   geom_smooth(method = "lm", se = FALSE, lwd = 1.25) +
   #  theme_bw() +
   theme(
-    legend.title = element_text(size = 18),
-    legend.text = element_text(size = 16),
-    axis.title.x = element_text(size = 18),
-    axis.text.x = element_text(size = 16),
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14),
+    axis.title.x = element_text(size = 16),
+    axis.text.x = element_text(size = 14),
     axis.title.y = element_blank(),
-    axis.text.y = element_text(size = 16))
+    axis.text.y = element_text(size = 14))
 
 ancova_si + ancova_ci
 
