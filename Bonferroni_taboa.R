@@ -56,7 +56,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
     Bonferroni$inf[k] = mu_local[comb[k, 2]] - mu_local[comb[k, 1]] - ct * desvtip * sqrt(1/nj[comb[k, 2]] + 1/nj[comb[k, 1]])
     Bonferroni$sup[k] = mu_local[comb[k, 2]] - mu_local[comb[k, 1]] + ct * desvtip * sqrt(1/nj[comb[k, 2]] + 1/nj[comb[k, 1]])
   }
-  cat("#####  Intervalos de confianza simultáneos", "\n", " # con correccion de Bonferroni:  #####", "\n")
+  cat("#####  Intervalos de confianza simultáneos", "\n", " # con corrección de Bonferroni:  #####", "\n")
   if (!is.null(ndixitos)){
     print(round(Bonferroni, ndixitos))
   }
