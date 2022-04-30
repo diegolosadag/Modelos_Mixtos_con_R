@@ -40,7 +40,7 @@ attach(mates)
 
 set.seed(123)
 ind <- sample(1:dim(mates)[1], 40) #40 alumnas/os aleatorios
-mls0 <- lm(NotaMates[ind] ~ StSE[ind])
+mls0 <- lm(NotaMates[ind] ~ StSE[ind]) #modelo linear simple
 eps <- residuals(mls0)
 
 ggplot(data.frame(cbind(StSE[ind], NotaMates[ind])), aes(x = StSE[ind], y = NotaMates[ind])) +
