@@ -81,7 +81,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
   return(invisible(saida))
 }
 
-### Para cargala no teu script, ubicala en directorio e cargar source("Bonferroni_taboa.R").
+### Para cargala no teu script, ubicala en directorio e cargar con source("Bonferroni_taboa.R").
 #Os numeros dos grupos correspondense a orde na que se atopan no vector levels(varfactor), e.g., 
   # 1 <- "setosa", 2 <- "versicolor", etc.
 
