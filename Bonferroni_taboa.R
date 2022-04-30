@@ -25,10 +25,10 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
     stop("varfactor debe ser da clase factor, proba con factor(varfactor).")
   }
   if (!is.numeric(alpha_sen_CB)){
-    stop("O nivel de significacion sen correccion de Bonferroni alpha_sen_CB ten que ser un numero.")
+    stop("O nivel de significacion sen correccion de Bonferroni alpha_sen_CB ten que ser un nÃºmero.")
   }
   if (!is.numeric(ndixitos) & !is.null(ndixitos) | ndixitos < 0){
-    stop("O número de díxitos ndixitos ten que ser un número natural.")
+    stop("O nÃºmero de dÃ­xitos ndixitos ten que ser un nÃºmero natural.")
   }
   
   n = length(varresposta)
@@ -51,7 +51,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
     Bonferroni$inf[k] = mu_local[comb[k, 2]] - mu_local[comb[k, 1]] - ct * desvtip * sqrt(1/nj[comb[k, 2]] + 1/nj[comb[k, 1]])
     Bonferroni$sup[k] = mu_local[comb[k, 2]] - mu_local[comb[k, 1]] + ct * desvtip * sqrt(1/nj[comb[k, 2]] + 1/nj[comb[k, 1]])
   }
-  cat("#####  Intervalos de confianza simultáneos", "\n", " # con correccion de Bonferroni:  #####", "\n")
+  cat("#####  Intervalos de confianza simultÃ¡neos", "\n", " # con correccion de Bonferroni:  #####", "\n")
   if (!is.null(ndixitos)){
     print(round(Bonferroni, ndixitos))
   }
@@ -61,7 +61,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
   nondifiren <- numeric(nrow(comb))
   for (k in 1:nrow(comb)){
     if(sign(Bonferroni[k, 2]) == sign(Bonferroni[k, 3])){
-      cat("\n", "- Os grupos", rownames(Bonferroni)[k], "difiren nas súas medias")
+      cat("\n", "- Os grupos", rownames(Bonferroni)[k], "difiren nas sÃºas medias")
       difiren[k] <- rownames(Bonferroni)[k]
     }
     else{
