@@ -73,7 +73,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
       nondifiren[k] <- rownames(Bonferroni)[k]
     }
   }
-  cat("\n\n", "## Nivel de significación empregado\ncoa corrección de Bonferroni: ", alpha_con_CB)
+  cat("\n\n", "## Nivel de significación empregado\n   coa corrección de Bonferroni: ", alpha_con_CB)
   difiren_ch <- difiren[nondifiren == 0]
   nondifiren_ch <- nondifiren[difiren == 0]
   
