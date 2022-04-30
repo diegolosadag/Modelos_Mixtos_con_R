@@ -28,7 +28,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
     stop("O nivel de significacion sen correccion de Bonferroni alpha_sen_CB ten que ser un número.")
   }
   if (!is.numeric(ndixitos) & !is.null(ndixitos) | ndixitos < 0){
-    stop("O número de díxitos ndixitos ten que ser un número natural.")
+    stop("O número de díxitos \"ndixitos\" ten que ser un número natural.")
   }
   
   n = length(varresposta)
