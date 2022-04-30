@@ -55,7 +55,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
   if (!is.null(ndixitos)){
     print(round(Bonferroni, ndixitos))
   }
-  else{ print(Bonferroni)}
+  else{print(Bonferroni)}
   cat("\n", "#####  Grupos cuxas medias difiren:  #####")
   difiren <- numeric(nrow(comb))
   nondifiren <- numeric(nrow(comb))
