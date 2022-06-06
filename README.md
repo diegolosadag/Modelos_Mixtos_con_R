@@ -1,8 +1,11 @@
 # Modelos_Mixtos_con_R
 ## Abstract / Resumo
-<span style="color:red;font-weight:700;font-size:20px">
-    ----- English:
-</span>
+<style>
+red { color: red }
+yellow { color: yellow }
+</style>
+
+<red> ----- English:</red>
 ----- English:
 
   In the Statistical field, models of regression are the main tool employed when estimating the relation among random variables is needed. In particular, we will see how one or several variables (that we will call explanatory variables) influence another variable (that we will call response variable).
