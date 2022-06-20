@@ -99,13 +99,13 @@ ggplot(mates7, aes(x = Escola, y = NotaMates, color = Escola)) +
   geom_boxplot() +
   labs(x = "Escolas", y = "Notas en Matemáticas", color = "Escolas") +
   scale_color_brewer(palette = "Dark2") +
-  geom_segment(x = 0.625, y = mu_local[1], xend = 	1.375, yend = mu_local[1], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 1.625, y = mu_local[2], xend = 	2.375, yend = mu_local[2], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 2.625, y = mu_local[3], xend = 	3.375, yend = mu_local[3], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 3.625, y = mu_local[4], xend = 	4.375, yend = mu_local[4], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 4.625, y = mu_local[5], xend = 	5.375, yend = mu_local[5], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 5.625, y = mu_local[6], xend = 	6.375, yend = mu_local[6], linetype = "dotted", col = "firebrick4") +
-  geom_segment(x = 6.625, y = mu_local[7], xend = 	7.375, yend = mu_local[7], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 0.625, y = mu_local[1], xend = 1.375, yend = mu_local[1], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 1.625, y = mu_local[2], xend = 2.375, yend = mu_local[2], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 2.625, y = mu_local[3], xend = 3.375, yend = mu_local[3], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 3.625, y = mu_local[4], xend = 4.375, yend = mu_local[4], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 4.625, y = mu_local[5], xend = 5.375, yend = mu_local[5], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 5.625, y = mu_local[6], xend = 6.375, yend = mu_local[6], linetype = "dotted", col = "firebrick4") +
+  geom_segment(x = 6.625, y = mu_local[7], xend = 7.375, yend = mu_local[7], linetype = "dotted", col = "firebrick4") +
   geom_hline(yintercept = mean(NotaMates), linetype = "dashed", col = "navy") +
   #theme_bw() +
   theme(
