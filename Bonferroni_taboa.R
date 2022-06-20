@@ -39,7 +39,7 @@ Bonferroni_taboa <- function(varresposta, varfactor, alpha_sen_CB = .05, ndixito
   n = length(varresposta)
   J = length(levels(varfactor))
   nj = table(varfactor)
-  desvtip = sqrt(deviance(lm(varresposta ~ varfactor))/(n-J))
+  desvtip = sqrt(deviance(lm(varresposta ~ varfactor)) / (n-J))
   comb <- gtools::combinations(J, 2, 1:J) #ncomp = J*(J-1)/2
   alpha_con_CB <- alpha_sen_CB / (2 * nrow(comb))
   ct = qt(1 - alpha_con_CB, n - J)
