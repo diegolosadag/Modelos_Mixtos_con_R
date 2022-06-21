@@ -117,7 +117,7 @@ for (i in 1:length(escolas_particip100)){
 }
 sum(pval < alpha)  #resultan significativamente normais
 
-mates7 <- mates[alum_escolas_particip100, ] #evitamos sesgos de eleccion
+mates7 <- mates[alum_escolas_particip100, ] #evitamos nesgos de eleccion
 dim(mates7) # 307 alumnas/os e 11 variables
 mates7$Escola <- factor(mates7$Escola, levels = escolas_particip100) #corrixir levels
 levels(mates7$Escola) <- paste("E", 1:7, sep = "") #Cambiase o nome destas 7 escolas
