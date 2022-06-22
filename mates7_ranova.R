@@ -194,7 +194,7 @@ ggplot(u0df, aes(x = u0pos, y = u0)) +
   geom_segment(x = u0df$u0pos, y = u0df$u0 - 1.96*u0df$u0se, xend = u0df$u0pos, 
                yend = u0df$u0 + 1.96*u0df$u0se, size = 1, col = "darkcyan") +
   geom_point(size = 3, col = "tomato3") +
-  xlab(expression(paste("Indices dos ", widehat(u)[j] ," ordeados de menor a maior"))) +
+  xlab("") +
   ylab("Residuos a nivel de Escola") +
   scale_x_continuous(breaks = 1:7) +
   geom_hline(yintercept = 0, size = 1) +
