@@ -18,6 +18,8 @@ Moitas bases de datos concernentes ao eido da Educación, a Medicina ou as Cienc
 Afondando aínda máis na análise de datos xerárquicos, os grupos presentes no conxunto de datos poden considerarse unha mostra aleatoria dunha poboación máis grande de grupos para facer Inferencia sobre os grupos en xeral. Neste caso, os modelos de regresión \textit{ANOVA} e \textit{ANCOVA} deixan de ser válidos, e xorden os denominados modelos mixtos ou modelos multinivel. Ao longo deste traballo introduciranse os modelos mixtos e poñerase de manifesto a súa utilidade para estudar bases de datos cunha estrutura de dous niveis, onde os individuos se atopan no primeiro nivel e están aniñados en grupos no segundo nivel, mediante a incorporación de efectos aleatorios. Para levar a cabo esta ilustración empregarase unha base de datos reais que será analizada empregando a ferramenta estatística R.
 
 ## Guía
+Primeiramente, executar *requerimentos.R* para automatizar a instalación dos paquetes necesarios.
+
 No script *mates7_integro.R* atópase o código íntegro relativo a este TFG.
 
 No script *mates7_clasica.R* atópase o código concernente á Estatística Clásica (Introdución e Capítulo 1: ANOVA e ANCOVA) relativo a este TFG.
