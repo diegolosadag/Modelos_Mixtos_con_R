@@ -372,7 +372,7 @@ for (k in 1:nrow(u0df)){
   u0df$escolaidentif[k] <- numero
 }
 #Reordeamos a taboa en funcion do identificador escola, tal  como estaba ao inicio pero coa nova columna
-u0df <- u0df[order(u0df$escolaidentif), ] #reordenación
+u0df <- u0df[order(u0df$escolaidentif), ] #reordenacion
 estloc <- summary(ranovamates)$coef[1] + u0df$u0 #estimacion media para cada escola
 u0df$estloc <- estloc
 u0df$escolaidentif <- paste("E", 1:7, sep = "") #nomes escolas
