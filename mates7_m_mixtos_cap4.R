@@ -311,7 +311,7 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
                arrow = arrow(length = unit(0.175, "inches")), linetype = "solid", size = 1) +
   annotate("text", x = .12, y = (rectamm2() + rectamm2(sm = 1)) / 2 + .27, parse = TRUE, 
            label = expression(widehat(beta)[2]), col = "violetred4", size = 6) +
-  #Residuos a nivel de escola u^gorro_{j}, para sm = 0
+  #Residuos a nivel de escola u^gorro_{j}, para SocialMin = 0
   geom_segment(x = -1.65, xend = -1.65, y = rectamm2(-1.65), yend = rectamm2(-1.65, escola = 4), 
                color = dark_2[4], arrow = arrow(length = unit(0.15, "inches")), linetype = "solid", size = .9) +
   geom_segment(x = -1.60, xend = -1.60, y = rectamm2(-1.60), yend = rectamm2(-1.60, escola = 5), 
@@ -320,7 +320,7 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
            parse = TRUE, label = expression(widehat(u)[4]), col = dark_2[4], size = 6.5) +
   annotate("text", x = -1.445, y = (rectamm2(-1.445) + rectamm2(-1.445, escola = 5) ) / 2, 
            parse = TRUE, label = expression(widehat(u)[5]), col = dark_2[5], size = 6.5) +
-  #Residuos a nivel de escola u^gorro_{j}, para sm = 1
+  #Residuos a nivel de escola u^gorro_{j}, para SocialMin = 1
   geom_segment(x = -1.40, xend = -1.40, y = rectamm2(-1.40, sm = 1), yend = rectamm2(-1.40, escola = 4, sm = 1), 
                color = dark_2[4], arrow = arrow(length = unit(0.15, "inches")), linetype = "solid", size = .9) +
   geom_segment(x = -1.35, xend = -1.35, y = rectamm2(-1.35, sm = 1), yend = rectamm2(-1.35, escola = 5, sm = 1), 
@@ -403,7 +403,7 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
   scale_shape_manual(values = c(16, 17)) +
   #Media global
   geom_segment(x = -1.7, xend = 1.5, y = rectamm3(-1.7), yend = rectamm3(1.5), size = 1.35, col = 1) +
-  #Media local 4
+  #Medias locais
   geom_segment(x = -1.7, xend = 1.50, y = rectamm3(-1.7, escola = 3), yend = rectamm3(1.50, 
                                                                                       escola = 3), lwd = 1, linetype = "twodash", color = dark_2[3]) +
   geom_segment(x = -1.7, xend = 1.50, y = rectamm3(-1.7, escola = 4), yend = rectamm3(1.50, 
@@ -426,7 +426,7 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
            label = expression(Y[7][","][3]), col = dark_2[3], size = 7) +
   annotate("text", x = StSE[140] - .125, y = NotaMates[140] - .75, parse = TRUE,
            label = expression(Y[26][","][4]), col = dark_2[4], size = 7) +
-  #Residuos a nivel de escola de intercepto u^gorro_{0j}, para sm = 0
+  #Residuos a nivel de escola de intercepto u^gorro_{0j}, para SocialMin = 0
   geom_segment(x = 0, xend = 0, y = rectamm3(), yend = rectamm3(0, 3), color = dark_2[3], 
                arrow = arrow(length = unit(0.15, "inches")), linetype = "solid", size = .9) +
   geom_segment(x = 0, xend = 0, y = rectamm3(), yend = rectamm3(0, 4), color = dark_2[4], 
@@ -442,21 +442,21 @@ ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola, shape = SocialMin)) 
                size = 1, col = "violetred4") +
   annotate("text", x = -.345, y = (rectamm3(-1.5) + rectamm3(-.5) ) / 2 - .35, parse = TRUE, 
            label = expression(widehat(gamma)[1][0]), col = "violetred4", size = 6) +
-  #Pendente escola 4 gamma_{10} + ugorro_{14} con sm = 0
+  #Pendente escola E4 gamma_{10} + ugorro_{14} con SocialMin = 0
   geom_segment(x = -1.5, xend = -.5, y = rectamm3(-1.5, 4), yend = rectamm3(-1.5, 4), 
                linetype = "solid", size = 1, col = "violetred4") +
   geom_segment(x = -.5, xend = -.5, y = rectamm3(-1.5, 4), yend = rectamm3(-.5, 4), 
                linetype = "solid", size = 1, col = "violetred4") +
   annotate("text", x = -.175, y = (rectamm3(-1.5, 4) + rectamm3(-.5, 4) ) / 2 - .1, parse = TRUE, 
            label = expression(widehat(gamma)[1][0] + widehat(u)[1][4]), col = "violetred4", size = 6) +
-  #Pendente escola 4 gamma_{10} + ugorro_{14} con sm = 1
+  #Pendente escola E4 gamma_{10} + ugorro_{14} con SocialMin = 1
   geom_segment(x = -1.5, xend = -.5, y = rectamm3(-1.5, 4, 1), yend = rectamm3(-1.5, 4, 1), 
                linetype = "solid", size = 1, col = "violetred4") +
   geom_segment(x = -.5, xend = -.5, y = rectamm3(-1.5, 4, 1), yend = rectamm3(-.5, 4, 1), 
                linetype = "solid", size = 1, col = "violetred4") +
   annotate("text", x = -.175, y = (rectamm3(-1.5, 4, 1) + rectamm3(-.5, 4, 1) ) / 2 - .1, parse = TRUE, 
            label = expression(widehat(gamma)[1][0] + widehat(u)[1][4]), col = "violetred4", size = 6) +
-  #Pendente escola 3 gamma_{10} + ugorro_{13}
+  #Pendente escola E3 gamma_{10} + ugorro_{13}
   geom_segment(x = -1.5, xend = -.5, y = rectamm3(-1.5, 3), yend = rectamm3(-1.5, 3), 
                linetype = "solid", size = 1, col = "violetred4") +
   geom_segment(x = -.5, xend = -.5, y = rectamm3(-1.5, 3), yend = rectamm3(-.5, 3), 
