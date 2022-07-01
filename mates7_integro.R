@@ -252,7 +252,7 @@ ancova_ci <- ggplot(mates7, aes(x = StSE, y = NotaMates, color = Escola)) +
     axis.title.y = element_blank(),
     axis.text.y = element_text(size = 14))
 
-ancova_si + ancova_ci
+ancova_si + ancova_ci #sintaxe válida grazas á libraría patchwork
 
 
 ######################################
