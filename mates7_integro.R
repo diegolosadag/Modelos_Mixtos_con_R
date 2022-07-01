@@ -362,7 +362,7 @@ u0 <- ranef(ranovamates, postVar = TRUE) #estimacion dos residuos a nivel de esc
 u0se <- sqrt(attr(u0[[1]], "postVar")[1, , ]) #desviacions tipicas dos u0
 escolaidentif <- rownames(u0[[1]])
 u0df <- cbind(escolaidentif, u0[[1]], u0se)
-colnames(u0df) <- c("escolaidentif","u0","u0se")
+colnames(u0df) <- c("escolaidentif", "u0", "u0se")
 u0df <- u0df[order(u0df$u0), ] #Ordeamos por orde ascendente dos valores de u0
 u0df <- cbind(u0df, c(1:dim(u0df)[1])) #Nova columna contendo ranking
 colnames(u0df)[4] <- "u0pos" #u0pos nome da nova columna
@@ -372,7 +372,7 @@ for (k in 1:nrow(u0df)){
   u0df$escolaidentif[k] <- numero
 }
 #Reordeamos a taboa en funcion do identificador escola, tal  como estaba ao inicio pero coa nova columna
-u0df <- u0df[order(u0df$escolaidentif), ]
+u0df <- u0df[order(u0df$escolaidentif), ] #reordenación
 estloc <- summary(ranovamates)$coef[1] + u0df$u0 #estimacion media para cada escola
 u0df$estloc <- estloc
 u0df$escolaidentif <- paste("E", 1:7, sep = "") #nomes escolas
